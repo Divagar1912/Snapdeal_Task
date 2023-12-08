@@ -1,0 +1,59 @@
+Snapdeal_Task 
+
+package SeleniumConcepts.org.guvi;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.TargetLocator;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Snapdeal_Task {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		//set path
+		System.setProperty("webdriver.chrome.driver", "D://Driver//chromedriver.exe//");
+		
+		//Launch the chrome browser
+		WebDriver driver = new ChromeDriver();
+		
+		//delete all cookies
+		driver.manage().deleteAllCookies();
+		
+		//launch the website
+		driver.get("http://www.snapdeal.com");
+		Thread.sleep(1000);
+		
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		
+		WebElement signin = driver.findElement(By.xpath("//span[@class='accountUserName col-xs-12 reset-padding']"));
+		signin.click();
+		Thread.sleep(3000);
+		
+		//Click on login button
+		WebElement loginbtn = driver.findElement(By.xpath("//a[normalize-space()='login']"));
+		loginbtn.click();
+		Thread.sleep(3000);
+		
+		//enter into frame
+		driver.switchTo().frame("loginIframe");
+		WebElement username = driver.findElement(By.id("userName"));
+		username.sendKeys("divagar.vel@gmail.com");
+		Thread.sleep(2000);
+		
+		WebElement cntnbtn = driver.findElement(By.xpath("//button[@id='checkUser']"));
+		cntnbtn.click();
+		Thread.sleep(10000);
+		
+		WebElement btn = driver.findElement(By.id("loginUsingOtp"));
+		btn.click();
+		Thread.sleep(3000);
+		
+		driver.close();	
+		
+		
+	}
+
+}
